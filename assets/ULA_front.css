@@ -1,0 +1,85 @@
+/*
+
+Sistema de apreenção
+
+Autor : Fabiano Faria Hatori
+
+Folha de estilo 
+
+*/
+
+
+/*header*/
+/* div do header do titulo  */
+.box_header
+{
+	background-color: #cccccc;
+	height: 120px;
+}
+
+/* div do usuario  */
+
+.box_user
+{
+	background-color: #cccccc;
+	height: 120px;
+}
+
+.box_user h4 
+{
+	text-align: center;
+}
+
+
+/* main-menu */
+.main-menu
+{
+	min-height: 450px;
+}
+
+
+
+
+/*footer*/
+
+.footer_box
+{
+	background-color: #cccccc;
+	bottom: 0;
+	height: 100px;
+}
+.footer_box p
+{
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 35px; 
+}
+
+/* misc */
+
+.sem_margin
+{
+	margin-right: 0px !important;
+	margin-left: 0px !important;
+}
+.sem_padding
+{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+/* Tableas */
+
+.detalhesIPL 
+{ 
+	border-collapse: collapse;
+}
+
+td {
+    margin: 15px;
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 10px !important;
+}

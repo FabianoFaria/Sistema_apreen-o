@@ -61,7 +61,8 @@ class Continuando_documento extends CI_Controller {
     }
 
     public function Mercadorias($idRow)
-    {
+    {   
+        $data['row_haul'] = null; //variavel setada para null em caso de nova mercadoria
         $data['id_Row'] = $idRow;
         $data['documento'] = $this->Cont_doct->load_doct($idRow);
 
@@ -74,6 +75,7 @@ class Continuando_documento extends CI_Controller {
 
     public function Detidos($idRow)
     {
+        $data['row_contact'] = null;
         $data['id_Row'] = $idRow;
         $data['estados'] = $this->documentoModel->load_estados(); 
         $data['cidades'] = $this->documentoModel->load_cidades();
@@ -88,7 +90,8 @@ class Continuando_documento extends CI_Controller {
     }
 
     public function Veiculos($idRow)
-    {
+    {   
+        $data['row_Auto'] = null; //Dado settado em null pois essa função é para cadastrar novo carro
         $data['id_Row'] = $idRow;
         $data['documento'] = $this->Cont_doct->load_doct($idRow);
         $data['estados'] = $this->documentoModel->load_estados(); 

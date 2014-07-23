@@ -1,5 +1,21 @@
 <div class="row sem_margin">
-	
+	<?php
+
+		if($row_contact != null)
+		{	
+	?>
+			<a href="<?php echo base_url("/index.php/detalhes_documento/getTheRow/".$id_Row.""); ?>">Cancelar</a>
+			<br>
+	<?php
+
+			
+			echo "Tela para update contato";
+		}
+
+		else
+		{
+	?>
+
 
 	<?php
 		$arrayE = array();
@@ -104,6 +120,10 @@
 	                       
 	</div>
 
+<?php
 
+	}
+
+?>
 
 </div>

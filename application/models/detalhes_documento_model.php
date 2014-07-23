@@ -48,4 +48,36 @@ class Detalhes_documento_model extends CI_Model {
         return $anexos->result();
     }
 
+    //Comandos para carregar dados de apenas um unico registro
+
+    public function load_single_auto($id_auto)
+    {
+        $auto = $this->db->get_where('tbl_vehicle', array('ID_vehicle' => $id_auto));
+        return $auto->result();
+    }
+
+    public function load_single_Haul($id_haul)
+    {
+        $haul = $this->db->get_where('tbl_haul', array('ID_HAUL' => $id_haul));
+        return $haul->result();
+    }
+
+    public function load_single_contato($id_Contato)
+    {
+        $haul = $this->db->get_where('tbl_contact', array('ID_contact' => $id_Contato));
+        return $haul->result();
+    }
+
+    public function load_single_wrs($id_wrs)
+    {
+        $wrs = $this->db->get_where('tbl_wrs', array('ID_wrs' => $id_wrs));
+        return $wrs->result();
+    }
+
+    public function load_single_anexo($id_anexo)
+    {
+        $wrs = $this->db->get_where('tbl_anexos', array('ID_anexos' => $id_anexo));
+        return $wrs->result();
+    }
+
 }

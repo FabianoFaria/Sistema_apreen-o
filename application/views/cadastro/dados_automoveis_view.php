@@ -2,6 +2,25 @@
 
 	<?php
 
+		if($row_Auto != null)
+		{	
+	?>
+			<a href="<?php echo base_url("/index.php/detalhes_documento/getTheRow/".$id_Row.""); ?>">Cancelar</a>
+			<br>
+	<?php
+
+			
+			echo "Tela para update";
+		}
+
+		else
+		{
+	?>
+
+
+
+	<?php
+
 		//$id_Row
 
 		$arrayE = array();
@@ -89,3 +108,9 @@
 
 
 </div>
+
+<?php
+
+	}
+
+?>

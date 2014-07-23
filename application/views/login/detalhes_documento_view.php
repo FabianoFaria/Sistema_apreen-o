@@ -126,6 +126,7 @@
 		<ul>
 		<?php  
 		foreach ($automoveis as $carro) {
+			$id_carro = $carro->ID_vehicle;
 			$carroRowid = $carro->ROW_ID;
 			$categoria = $carro->category;
 			$modelo = $carro->model;
@@ -139,7 +140,7 @@
 			?>
 
 
-			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $cidade; ?> | Cidade : <?php echo $estado; ?>| <a href="">Editar</a> | <a href="">Excluir</a></li>
+			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $cidade; ?> | Cidade : <?php echo $estado; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_auto/".$ROW_ID."/".$id_carro.""); ?>">Editar</a> | <a href="">Excluir</a></li>
 
 
 
@@ -180,7 +181,7 @@
 		?>
 
 
-			<li>Produto : <?php echo $produto; ?> | Medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | Marca : <?php echo $marcaMercadoria; ?>| <a href="">Editar</a> | <a href="">Excluir</a></li>
+			<li>Produto : <?php echo $produto; ?> | Medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | Marca : <?php echo $marcaMercadoria; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>">Editar</a> | <a href="">Excluir</a></li>
 
 
 
@@ -224,7 +225,7 @@
 		?>
 
 
-			<li>Nome do envolvido : <?php echo $nomeEnvolvido; ?> | Nascimento : <?php echo $nascimentoEnvol; ?> | Mâe do envolvido : <?php echo $motherEnvol; ?>| <a href="">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do envolvido : <?php echo $nomeEnvolvido; ?> | Nascimento : <?php echo $nascimentoEnvol; ?> | Mâe do envolvido : <?php echo $motherEnvol; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_contato/".$ROW_ID."/".$IdEnvol.""); ?>">Editar</a> | <a href="">Excluir</a></li>
 
 
 

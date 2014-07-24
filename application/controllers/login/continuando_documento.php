@@ -106,6 +106,7 @@ class Continuando_documento extends CI_Controller {
 
     public function Depositos($idRow)
     {
+        $data['row_local'] = null;
         $data['id_Row'] = $idRow;
         $data['endereco'] = $this->Cont_doct->load_endereco($idRow);
         $data['documento'] = $this->Cont_doct->load_doct($idRow);
@@ -120,6 +121,7 @@ class Continuando_documento extends CI_Controller {
 
     public function NotasAnexos($idRow)
     {
+        $data['row_anexo'] = null;
         $data['id_Row'] = $idRow;
         $data['documento'] = $this->Cont_doct->load_doct($idRow);
        // $data['anexos'] = $this->Cont_doct->load_anexos($idRow);

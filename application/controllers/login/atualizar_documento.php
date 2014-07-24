@@ -6,6 +6,7 @@ class Atualizar_documento extends CI_Controller {
     
     function __construct() {
         parent::__construct();
+        $this->load->helper('form');
         $this->load->model('Atualizar_documento_model', 'atualizar');
         $this->load->model('User_model', 'user');
         $this->user->logged();
@@ -26,6 +27,8 @@ class Atualizar_documento extends CI_Controller {
         echo $row_id;
         redirect('detalhes_documento/getTheRow/'.$row_id.'');
     }
+
+    //Funções para atualizar os dados das tabelas...
 
     public function atualizaDoc()
     {
@@ -182,4 +185,81 @@ class Atualizar_documento extends CI_Controller {
 
        }
     }
+
+
+    public function Atualizar_veiculo()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
+
+         $validations = array(
+
+                array(
+                'field' => 'cat_veiculo',
+                'label' => 'cat_veiculo',
+                ),
+                array(
+                'field' => 'mod_veiculo',
+                'label' => 'mod_veiculo'
+            
+                ),
+                array(
+                'field' => 'mark_veiculo',
+                'label' => 'mark_veiculo'
+
+                ),
+            array(
+                'field' => 'chassi',
+                'label' => 'chassi',
+                'rules' => 'trim|required'
+                ),
+            array(
+                'field' => 'renavan',
+                'label' => 'renavan'
+                ),
+            array(
+                'field' => 'placa_n',
+                'label' => 'placa_n'
+                ),
+            array(
+                'field' => 'estado',
+                'label' => 'estado'
+                ),
+            array(
+                'field' => 'cidade',
+                'label' => 'cidade'
+                )
+
+            );
+
+        $this->form_validation->set_rules($validations);
+
+        if ($this->form_validation->run() == FALSE) {
+       
+        echo $row_id = $this->input->post('row_id');
+        redirect( base_url("/continuar_documento/Veiculos/".$row_id.""));
+        } else { 
+       //  $row->ROW_ID;
+         $dataAuto['ID_auto'] = $this->input->post('');
+         $dataAuto['ROW_ID'] = $this->input->post('row_id');  
+         $dataAuto['category'] = $this->input->post('cat_veiculo');          
+         $dataAuto['model'] = $this->input->post('mod_veiculo');
+         $dataAuto['brand'] = $this->input->post('mark_veiculo');
+         $dataAuto['chassi'] = $this->input->post('chassi');
+         $dataAuto['renavan'] = $this->input->post('renavan');
+         $dataAuto['placa'] = $this->input->post('placa_n');
+         $dataAuto['city'] = $this->input->post('cidade');
+         $dataAuto['state'] = $this->input->post('estado');
+
+        $Row_auto = null;
+        $Row_auto = $this->documentoModel->cadastrar_veiculo($dataAuto);
+
+        if($Row_auto != false)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+        }
+
+       }
+    }
+
 }

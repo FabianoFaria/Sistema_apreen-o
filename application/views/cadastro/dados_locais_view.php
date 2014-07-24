@@ -2,6 +2,23 @@
 
 	<?php
 
+		if($row_local != null)
+		{	
+	?>
+			<a href="<?php echo base_url("/index.php/detalhes_documento/getTheRow/".$id_Row.""); ?>">Cancelar</a>
+			<br>
+	<?php
+
+			
+			echo "Tela para update haul";
+		}
+
+		else
+		{
+	?>
+
+	<?php
+
 	$arrayE = array();
 	$arrayC = array();
 	$arrayProduto = array('A','B','C','D');
@@ -58,7 +75,11 @@
 	</div>
 
 
+<?php
+	
+	}
 
+?>
 
 
 </div>

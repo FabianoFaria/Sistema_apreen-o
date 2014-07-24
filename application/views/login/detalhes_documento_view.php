@@ -264,7 +264,7 @@
 
 		?>
 
-			<li>Nome do envolvido : <?php echo $produtoWRS; ?> | Unidade de medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | <a href="">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do envolvido : <?php echo $produtoWRS; ?> | Unidade de medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>">Editar</a> | <a href="">Excluir</a></li>
 
 			<?php
 
@@ -297,7 +297,7 @@
 			$local_arquivo = $anexo->location;
 		?>
 
-			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>">Baixar o arquivo</a> | <a href="">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>">Baixar o arquivo</a> | <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_anexos/".$ROW_ID."/".$Idanexos.""); ?>">Editar</a> | <a href="">Excluir</a></li>
 
 			<?php
 

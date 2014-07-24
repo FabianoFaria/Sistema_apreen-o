@@ -7,8 +7,10 @@ class Detalhes_documento extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('form');
         $this->load->model('User_model', 'user');
         $this->load->model('Novo_documento_model', 'documentoModel');
+        $this->load->model('Continuando_documento_model', 'Cont_doct');
         $this->load->model('Detalhes_documento_model', 'DetalhesModel');
         $this->user->logged();
     }
@@ -45,6 +47,9 @@ class Detalhes_documento extends CI_Controller {
         $data['row_Auto'] = $row_Auto;
         $data['id_Row'] = $row_id;
         $data['automoveis'] =  $this->DetalhesModel->load_single_auto($row_Auto);
+        $data['documento'] = $this->Cont_doct->load_doct($row_id);
+        $data['estados'] = $this->documentoModel->load_estados(); 
+        $data['cidades'] = $this->documentoModel->load_cidades();
 
         //load templates
         $this->load->view('templates/header');
@@ -78,6 +83,31 @@ class Detalhes_documento extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function atualizar_warehouse($row_id, $row_local)
+    {
+
+        $data['row_local'] = $row_local;
+        $data['id_Row'] = $row_id;
+        $data['local'] =  $this->DetalhesModel->load_single_wrs($row_local);
+
+        //load templates
+        $this->load->view('templates/header');
+        $this->load->view('cadastro/dados_locais_view', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function atualizar_anexos($row_id, $row_anexo)
+    {
+
+        $data['row_anexo'] = $row_anexo;
+        $data['id_Row'] = $row_id;
+        $data['local'] =  $this->DetalhesModel->load_single_anexo($row_anexo);
+
+        //load templates
+        $this->load->view('templates/header');
+        $this->load->view('cadastro/dados_nota_anexos_view', $data);
+        $this->load->view('templates/footer');
+    }
 
 
 }

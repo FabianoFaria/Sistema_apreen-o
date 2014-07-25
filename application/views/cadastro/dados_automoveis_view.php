@@ -84,7 +84,7 @@
 				<input type="hidden" name="row_id" value="<?php echo $id_Row; ?>" />
 				<input type="hidden" name="id_auto" value="<?php echo $ID_auto ?>" />
 
-				<input type="submit" name="Cadastrar" value="Atualizar endereço da ocorrencia" />
+				<input type="submit" name="Cadastrar" value="Atualizar dados do automovel" />
 				<br>
 				<br>
 
@@ -177,7 +177,7 @@
 
 		<input type="hidden" name="row_id" value="<?php echo $id_Row; ?>" />
 
-		<input type="submit" name="Cadastrar" value="Atualizar endereço da ocorrencia" />
+		<input type="submit" name="Cadastrar" value="Cadastrar automovel" />
 		<br>
 		<br>
 

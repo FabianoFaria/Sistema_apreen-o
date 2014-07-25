@@ -250,7 +250,8 @@ class Novo_documento extends CI_Controller {
         redirect( base_url("/continuar_documento/Veiculos/".$row_id.""));
         } else { 
        //  $row->ROW_ID;
-      echo   $dataAuto['ROW_ID'] = $this->input->post('row_id');  
+         $dataAuto['ID_vehicle'] = $this->input->post('id_auto');
+         $dataAuto['ROW_ID'] = $this->input->post('row_id');  
          $dataAuto['category'] = $this->input->post('cat_veiculo');          
          $dataAuto['model'] = $this->input->post('mod_veiculo');
          $dataAuto['brand'] = $this->input->post('mark_veiculo');
@@ -261,8 +262,13 @@ class Novo_documento extends CI_Controller {
          $dataAuto['state'] = $this->input->post('estado');
 
         $Row_auto = null;
-        $Row_auto = $this->documentoModel->cadastrar_veiculo($dataAuto);
-
+        if($this->input->post('id_auto') != null)
+        {   
+            echo 'automovel para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIZAR
+        } else
+        {
+            $Row_auto = $this->documentoModel->cadastrar_veiculo($dataAuto);
+        }
         if($Row_auto != false)
         {
             redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
@@ -313,6 +319,7 @@ class Novo_documento extends CI_Controller {
             redirect( base_url("/index.php/continuar_documento/Mercadorias/".$row_id.""));
             } else { 
            //  $row->ROW_ID;
+             $dataMercadoria['ID_HAUL'] = $this->input->post('id_haul');
              $dataMercadoria['ROW_ID'] = $this->input->post('row_id');  
              $dataMercadoria['product'] = $this->input->post('produto');          
              $dataMercadoria['unit'] = $this->input->post('medida');
@@ -321,14 +328,21 @@ class Novo_documento extends CI_Controller {
              $dataMercadoria['tabacalera'] = $this->input->post('tabacalera');
 
             $Row_haul = 0;
-            $Row_haul = $this->documentoModel->cadastrar_mercadoria($dataMercadoria);
 
-            if($Row_haul != 0)
+            if($this->input->post('id_haul') != null)
+            {   
+                echo 'mercadoria para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+            } 
+                else
             {
-                redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
-            }
+                $Row_haul = $this->documentoModel->cadastrar_mercadoria($dataMercadoria);
 
-           }
+                if($Row_haul != 0)
+                {
+                    redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+                }
+            }
+        }
 
     }
 
@@ -392,6 +406,7 @@ class Novo_documento extends CI_Controller {
             redirect( base_url("/index.php/continuar_documento/Detidos/".$row_id.""));
             } else { 
            //  $row->ROW_ID;
+             $dataEnvolvido['ID_contact'] = $this->input->post('contact_id');
              $dataEnvolvido['ROW_ID'] = $this->input->post('row_id');  
              $dataEnvolvido['name'] = $this->input->post('nomeD');          
              $dataEnvolvido['CPF'] = $this->input->post('CPF');
@@ -405,11 +420,18 @@ class Novo_documento extends CI_Controller {
              $dataEnvolvido['birth_country'] = $this->input->post('pais_nascimento');
 
             $Row_Deti = 0;
-            $Row_Deti = $this->documentoModel->cadastrar_envolvido($dataEnvolvido);
-
-            if($Row_Deti != 0)
+             if($this->input->post('contact_id') != null)
+            {   
+                echo 'detido para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+            } 
+                else
             {
-                redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+                $Row_Deti = $this->documentoModel->cadastrar_envolvido($dataEnvolvido);
+
+                if($Row_Deti != 0)
+                {
+                    redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+                }
             }
 
            }
@@ -452,7 +474,7 @@ class Novo_documento extends CI_Controller {
             echo $row_id = $this->input->post('row_id');
             redirect( base_url("/index.php/continuar_documento/Depositos/".$row_id.""));
             } else { 
-
+                $dataDeposito['ID_wrs'] = $this->input->post('id_local');
                 $dataDeposito['ROW_ID'] = $this->input->post('row_id');  
                 $dataDeposito['product'] = $this->input->post('produto');          
                 $dataDeposito['unit'] = $this->input->post('medida');
@@ -460,12 +482,21 @@ class Novo_documento extends CI_Controller {
                 $dataDeposito['tabacalera'] = $this->input->post('tabacalera');
 
             $Row_Depo = 0;
-            $Row_Depo = $this->documentoModel->cadastrar_depodito($dataDeposito);
 
-            if($Row_Depo != 0)
+             if($this->input->post('id_local') != null)
+            {   
+                echo 'deposito para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+            } 
+                else
             {
-                redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
-            }
+             $Row_Depo = $this->documentoModel->cadastrar_depodito($dataDeposito);
+
+
+                if($Row_Depo != 0)
+                {
+                    redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+                }
+                }
             }
 
     } //Fim da funcao

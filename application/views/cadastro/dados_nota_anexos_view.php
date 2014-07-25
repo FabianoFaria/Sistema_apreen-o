@@ -4,6 +4,10 @@
 
 		if($row_anexo != null)
 		{	
+
+			foreach ($anexo as $anx) {
+				# code...
+			}
 	?>
 			<a href="<?php echo base_url("/index.php/detalhes_documento/getTheRow/".$id_Row.""); ?>">Cancelar</a>
 			<br>

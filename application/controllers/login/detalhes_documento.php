@@ -63,6 +63,7 @@ class Detalhes_documento extends CI_Controller {
         $data['row_haul'] = $row_Haul;
         $data['id_Row'] = $row_id;
         $data['mercadoria'] =  $this->DetalhesModel->load_single_Haul($row_Haul);
+        $data['documento'] = $this->Cont_doct->load_doct($row_id);
 
         //load templates
         $this->load->view('templates/header');
@@ -75,7 +76,11 @@ class Detalhes_documento extends CI_Controller {
 
         $data['row_contact'] = $row_contact;
         $data['id_Row'] = $row_id;
+        $data['estados'] = $this->documentoModel->load_estados(); 
+        $data['cidades'] = $this->documentoModel->load_cidades();
+        $data['endereco'] = $this->Cont_doct->load_endereco($row_id);
         $data['contato'] =  $this->DetalhesModel->load_single_contato($row_contact);
+        $data['documento'] = $this->Cont_doct->load_doct($row_id);
 
         //load templates
         $this->load->view('templates/header');
@@ -89,6 +94,7 @@ class Detalhes_documento extends CI_Controller {
         $data['row_local'] = $row_local;
         $data['id_Row'] = $row_id;
         $data['local'] =  $this->DetalhesModel->load_single_wrs($row_local);
+        $data['documento'] = $this->Cont_doct->load_doct($row_id);
 
         //load templates
         $this->load->view('templates/header');
@@ -101,7 +107,8 @@ class Detalhes_documento extends CI_Controller {
 
         $data['row_anexo'] = $row_anexo;
         $data['id_Row'] = $row_id;
-        $data['local'] =  $this->DetalhesModel->load_single_anexo($row_anexo);
+        $data['anexo'] =  $this->DetalhesModel->load_single_anexo($row_anexo);
+        $data['documento'] = $this->Cont_doct->load_doct($row_id);
 
         //load templates
         $this->load->view('templates/header');

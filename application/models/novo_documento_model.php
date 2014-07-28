@@ -11,14 +11,14 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ROW_ID');
         $queryRow = $this->db->get('tbl_doct');
 
-        return $queryRow;
+        return $queryRow->result();
     }
     function cadastrar_endereco($data_adr) {
         $this->db->insert('tbl_addr', $data_adr);
         $this->db->select_max('ID_addr');
         $RowAdr = $this->db->get('tbl_addr');
 
-        return $RowAdr;
+        return $RowAdr->result();
     }
 
     function cadastrar_veiculo($data_auto) {
@@ -26,7 +26,7 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ID_vehicle');
         $RowAuto = $this->db->get('tbl_vehicle');
 
-        return $RowAuto;
+        return $RowAuto->result();
     }
 
     function cadastrar_mercadoria($data_haul) {
@@ -34,7 +34,7 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ID_HAUL');
         $RowHaul = $this->db->get('tbl_haul');
 
-        return $RowHaul;
+        return $RowHaul->result();
     }
 
     function cadastrar_envolvido($data_detido) {
@@ -42,7 +42,7 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ID_contact');
         $RowDetido = $this->db->get('tbl_contact');
 
-        return $RowDetido;
+        return $RowDetido->result();
     }
 
     function cadastrar_depodito($data_deposito) {
@@ -50,7 +50,7 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ID_wrs');
         $RowDeposito = $this->db->get('tbl_wrs');
 
-        return $RowDeposito;
+        return $RowDeposito->result();
     }
 
     function cadastrar_anexos($data_anexo) {
@@ -58,7 +58,14 @@ class Novo_documento_model extends CI_Model {
         $this->db->select_max('ID_anexos');
         $RowAnexo = $this->db->get('tbl_anexos');
 
-        return $RowAnexo;
+        return $RowAnexo->result();
+    }
+
+    function cadastrar_main($data_main)
+    {
+     $this->db->insert('tbl_main', $data_main);
+     $this->db->select_max('ID_main');
+     $RowMain = $this->db->get('tbl_main');   
     }
 
 

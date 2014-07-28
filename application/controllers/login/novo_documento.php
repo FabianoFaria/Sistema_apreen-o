@@ -12,6 +12,7 @@ class Novo_documento extends CI_Controller {
         $this->load->library('upload');
         $this->load->model('User_model', 'user');
         $this->load->model('Novo_documento_model', 'documentoModel');
+        $this->load->model('Atualizar_documento_model', 'atualizarDoct');
         $this->user->logged();
     }
     
@@ -159,12 +160,29 @@ class Novo_documento extends CI_Controller {
         $Row_id = $this->documentoModel->cadastrar_doc($data);
 
         if ($Row_id != null) {
-          // var_dump($Row_id);
-           foreach ($Row_id->result() as $row)
-            {
-                     $row->ROW_ID;
+          
+            //Salvar o registro do documento na tabela main
+
+            $Novo_main = null;
+
+            $rowOBJ = $Row_id[0]; //Objeto para recuperar o id do documento
+
+            //var_dump($rowOBJ);
+
+          // die();
+
+            //Salvar o documento na tabela MAIN
+
+            $row_main['ROW_ID'] = $rowOBJ->ROW_ID; 
+            $row_main['parent_TBL'] = 'tbl_doct';
+            $row_main['parent_id'] = $rowOBJ->ROW_ID;
+            $row_main['CHILD_ID'] = null;
+            $row_main['CHILD_TBL'] = null;
+
+           $Novo_main = $this->documentoModel->cadastrar_main($row_main); 
+
                    
-                    $dataAdr['ROW_ID'] =  $row->ROW_ID;
+                    $dataAdr['ROW_ID'] =  $rowOBJ->ROW_ID;
                     $dataAdr['address'] = $this->input->post('endereco');
                     $dataAdr['nunber'] = $this->input->post('numero_addr');
                     $dataAdr['complement'] = $this->input->post('complemento');
@@ -177,18 +195,28 @@ class Novo_documento extends CI_Controller {
                     $Row_adr = null;
                     $Row_adr = $this->documentoModel->cadastrar_endereco($dataAdr);
 
+                    $AdrOBJ = $Row_adr[0]; //Objeto para recuperar o id do endereço...
+
+                    //var_dump($Row_adr);
+
+                   // die();
+
                     if($Row_adr != null)
                     {
-                        foreach ($Row_adr->result() as $rowadr)
-                            {
-                               echo  "id do endereço ".$rowadr->ID_addr;
-                            }
+                            $param = $rowOBJ->ROW_ID; //Salvar o endereço na tabela main
 
-                            $param = $row->ROW_ID;
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $rowOBJ->ROW_ID;
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $rowOBJ->ROW_ID;
+                            $row_main['CHILD_ID'] = $AdrOBJ->ID_addr;
+                            $row_main['CHILD_TBL'] = 'tbl_addr';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
 
                             redirect('detalhes_documento/index/'.$param.'');
                     }
-            }
 
         } else {
             log_message('error', 'Erro no cadastro...');
@@ -264,11 +292,27 @@ class Novo_documento extends CI_Controller {
         $Row_auto = null;
         if($this->input->post('id_auto') != null)
         {   
-            echo 'automovel para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIZAR
+            $Row_auto = $this->atualizarDoct->atualiza_auto($dataAuto);
         } else
         {
             $Row_auto = $this->documentoModel->cadastrar_veiculo($dataAuto);
+
+            $rowOBJ = $Row_auto[0];
+
+            $param = $rowOBJ->ID_vehicle; //Salvar o endereço na tabela main
+
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $this->input->post('row_id');
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $this->input->post('row_id');
+                            $row_main['CHILD_ID'] = $param;
+                            $row_main['CHILD_TBL'] = 'tbl_vehicle';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
         }
+
+
         if($Row_auto != false)
         {
             redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
@@ -331,17 +375,31 @@ class Novo_documento extends CI_Controller {
 
             if($this->input->post('id_haul') != null)
             {   
-                echo 'mercadoria para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+                 $Row_haul = $this->atualizarDoct->atualiza_merc($dataMercadoria);
             } 
                 else
             {
                 $Row_haul = $this->documentoModel->cadastrar_mercadoria($dataMercadoria);
 
-                if($Row_haul != 0)
+                $rowOBJ = $Row_haul[0];
+
+                $param = $rowOBJ->ID_HAUL; //Salvar o endereço na tabela main
+
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $this->input->post('row_id');
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $this->input->post('row_id');
+                            $row_main['CHILD_ID'] = $param;
+                            $row_main['CHILD_TBL'] = 'tbl_haul';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
+
+            }
+            if($Row_haul != 0)
                 {
                     redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
                 }
-            }
         }
 
     }
@@ -406,6 +464,13 @@ class Novo_documento extends CI_Controller {
             redirect( base_url("/index.php/continuar_documento/Detidos/".$row_id.""));
             } else { 
            //  $row->ROW_ID;
+            $dataEx = explode("/", $this->input->post('nascimento'));
+            $month = $dataEx[0];
+            $day = $dataEx[1];
+            $year = $dataEx[2];
+            $finalDate = $year."-".$month."-".$day;
+
+
              $dataEnvolvido['ID_contact'] = $this->input->post('contact_id');
              $dataEnvolvido['ROW_ID'] = $this->input->post('row_id');  
              $dataEnvolvido['name'] = $this->input->post('nomeD');          
@@ -414,7 +479,7 @@ class Novo_documento extends CI_Controller {
              $dataEnvolvido['passport'] = $this->input->post('passaporte');
              $dataEnvolvido['father'] = $this->input->post('nome_pai');
              $dataEnvolvido['mother'] = $this->input->post('nome_mae');
-             $dataEnvolvido['birth_dt'] = $this->input->post('nascimento');
+             $dataEnvolvido['birth_dt'] = $finalDate;
              $dataEnvolvido['birth_city'] = $this->input->post('cidade_nascimento');
              $dataEnvolvido['birth_state'] = $this->input->post('estado_nascimento');
              $dataEnvolvido['birth_country'] = $this->input->post('pais_nascimento');
@@ -422,17 +487,31 @@ class Novo_documento extends CI_Controller {
             $Row_Deti = 0;
              if($this->input->post('contact_id') != null)
             {   
-                echo 'detido para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+                $Row_Deti = $this->atualizarDoct->atualiza_contact($dataEnvolvido);
             } 
                 else
             {
                 $Row_Deti = $this->documentoModel->cadastrar_envolvido($dataEnvolvido);
 
-                if($Row_Deti != 0)
+                $rowOBJ = $Row_Deti[0];
+
+                $param = $rowOBJ->ID_contact; //Salvar o detido na tabela main
+
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $this->input->post('row_id');
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $this->input->post('row_id');
+                            $row_main['CHILD_ID'] = $param;
+                            $row_main['CHILD_TBL'] = 'tbl_contact';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
+
+            }
+              if($Row_Deti != 0)
                 {
                     redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
                 }
-            }
 
            }
     }   //Fim da funcao
@@ -485,17 +564,32 @@ class Novo_documento extends CI_Controller {
 
              if($this->input->post('id_local') != null)
             {   
-                echo 'deposito para ser atualizado'; //CHAMAR A FUNÇÃO PARA ATUALIAR
+                $Row_Depo = $this->atualizarDoct->atualiza_wrs($dataDeposito);
             } 
                 else
             {
-             $Row_Depo = $this->documentoModel->cadastrar_depodito($dataDeposito);
+                $Row_Depo = $this->documentoModel->cadastrar_depodito($dataDeposito);
+
+                $rowOBJ = $Row_Depo[0];
+
+                $param = $rowOBJ->ID_wrs; //Salvar o wrs na tabela main
+
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $this->input->post('row_id');
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $this->input->post('row_id');
+                            $row_main['CHILD_ID'] = $param;
+                            $row_main['CHILD_TBL'] = 'tbl_wrs';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
 
 
-                if($Row_Depo != 0)
+            }
+
+              if($Row_Depo != 0)
                 {
                     redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
-                }
                 }
             }
 
@@ -547,16 +641,41 @@ class Novo_documento extends CI_Controller {
 
                     $data_upload = $this->upload->data();
 
+                    $dataAnexo['ID_anexos'] = $this->input->post('ID_anexo');
                     $dataAnexo['id_row'] = $this->input->post('row_id');  
                     $dataAnexo['nome_arquivo'] = $this->input->post('file_name');          
                     $dataAnexo['location'] = $data_upload['file_name'];
 
 
                     $Row_File = 0;
-                    $Row_File = $this->documentoModel->cadastrar_anexos($dataAnexo);
+                     if($this->input->post('ID_anexo') != null)
+                    {   
+                        $Row_File = $this->atualizarDoct->atualiza_anexo($dataAnexo);
+                    } 
+                    else
+                    {
+                        $Row_File = $this->documentoModel->cadastrar_anexos($dataAnexo);
+
+                        $rowOBJ = $Row_File[0];
+
+                        $param = $rowOBJ->ID_anexos; //Salvar o wrs na tabela main
+
+                            $Novo_main = null;
+
+                            $row_main['ROW_ID'] = $this->input->post('row_id');
+                            $row_main['parent_TBL'] = 'tbl_doct';
+                            $row_main['parent_id'] = $this->input->post('row_id');
+                            $row_main['CHILD_ID'] = $param;
+                            $row_main['CHILD_TBL'] = 'tbl_anexos';
+
+                            $Novo_main = $this->documentoModel->cadastrar_main($row_main);
+
+                        
+                    }
+
                     if($Row_File != 0)
                     {
-                     redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
+                        redirect('/detalhes_documento/getTheRow/'.$this->input->post('row_id').'');
                     }
 
 

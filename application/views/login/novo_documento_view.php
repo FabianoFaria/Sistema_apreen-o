@@ -102,6 +102,8 @@
 
 							    <label for="estado_apr">Estado da ocorrencia:</label><br/>
 							    <?php echo form_dropdown('estado_apr', $arrayE); ?>
+
+							    
 							    <div class="error"><?php echo form_error('estado_apr'); ?></div>
 
 							     <label for="cidade_apr">Cidade da ocorrencia:</label><br/>

@@ -94,6 +94,117 @@ class Atualizar_documento_model extends CI_Model {
         return true;
     }
 
+    public function atualiza_auto($data)
+    {
+       // echo $data['ROW_ID'];
+
+        $id_auto = $data['ID_vehicle'];
+
+        $auto= array(
+            'category' => $data['category'],
+            'model' => $data['model'],
+            'brand' => $data['brand'],
+            'chassi' => $data['chassi'],
+            'renavan' => $data['renavan'],
+            'placa' => $data['placa'],
+            'city' => $data['city'],
+            'state' => $data['state']           
+
+            );
+
+        $this->db->where('ID_vehicle', $id_auto);
+        $this->db->update('tbl_vehicle', $auto);
+        
+        return true;
+    }
+
+    public function atualiza_merc($data)
+    {
+       // echo $data['ROW_ID'];
+
+        $id_haul = $data['ID_HAUL'];
+
+        $merc= array(
+            'product' => $data['product'],
+            'unit' => $data['unit'],
+            'qty' => $data['qty'],
+            'brand' => $data['brand'],
+            'tabacalera' => $data['tabacalera']        
+
+            );
+
+        $this->db->where('ID_HAUL', $id_haul);
+        $this->db->update('tbl_haul', $merc);
+        
+        return true;
+    }
+
+
+    public function atualiza_contact($data)
+    {
+       // echo $data['ROW_ID'];
+
+        $id_contact = $data['ID_contact'];
+
+        $contact= array(
+            'name' => $data['name'],
+            'CPF' => $data['CPF'],
+            'rg' => $data['rg'],
+            'passport' => $data['passport'],
+            'father' => $data['father'],
+            'mother' => $data['mother'],
+            'birth_dt' => $data['birth_dt'],
+            'birth_city' => $data['birth_city'],
+            'birth_state' => $data['birth_state'],
+            'birth_country' => $data['birth_country']        
+
+            );
+
+        $this->db->where('ID_contact', $id_contact);
+        $this->db->update('tbl_contact', $contact);
+        
+        return true;
+    }
+
+
+    public function atualiza_wrs($data)
+    {
+       // echo $data['ROW_ID'];
+
+        $id_wrs = $data['ID_wrs'];
+
+        $contact= array(
+            'product' => $data['product'],
+            'unit' => $data['unit'],
+            'qty' => $data['qty'],
+            'tabacalera' => $data['tabacalera']
+            );
+
+        $this->db->where('ID_wrs', $id_wrs);
+        $this->db->update('tbl_wrs', $contact);
+        
+        return true;
+    }
+
+   
+     public function atualiza_anexo($data)
+    {
+       // echo $data['ROW_ID'];
+
+        $id_anx = $data['ID_anexos'];
+
+        $anexos = array(
+            'nome_arquivo' => $data['nome_arquivo'],
+            'location' => $data['location']
+            );
+
+        $this->db->where('ID_anexos', $id_anx);
+        $this->db->update('tbl_anexos', $anexos);
+        
+        return true;
+    }
+
+   
 }
 
        

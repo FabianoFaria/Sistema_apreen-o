@@ -692,4 +692,24 @@ class Novo_documento extends CI_Controller {
             }
 
     }// Fim da funcão...
+
+    public function chamaCidade($id)
+    {
+
+         $type = $this->input->post('type');
+
+        $list_cidades = $this->documentoModel->load_cidades_ajx($id); 
+
+        $dataCidades = array();
+
+
+        foreach ($list_cidades as $cidades) {
+            $dataCidades = $cidades;
+
+            echo "<option value='".$cidades->estado."'>".$cidades->nome."</option>";
+        }
+        
+        return $dataCidades;       
+
+    }
 }

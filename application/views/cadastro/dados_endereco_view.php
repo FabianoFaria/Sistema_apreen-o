@@ -41,7 +41,27 @@
 			$pais = $end->country;
 
 	?>
-
+							<script>
+								function mostraCidades(str) {
+								  if (str=="") {
+								    document.getElementById("cidade_apr").innerHTML="";
+								    return;
+								  }
+								  if (window.XMLHttpRequest) {
+								    // code for IE7+, Firefox, Chrome, Opera, Safari
+								    xmlhttp=new XMLHttpRequest();
+								  } else { // code for IE6, IE5
+								    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+								  }
+								  xmlhttp.onreadystatechange=function() {
+								    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+								      document.getElementById("listCidades").innerHTML=xmlhttp.responseText;
+								    }
+								  }
+								  xmlhttp.open("GET","<?php echo base_url(); ?>index.php/login/novo_documento/chamaCidade/"+str,true);
+								  xmlhttp.send();
+								}
+							</script>
 
 	<h2>Dados do endereço : <?php echo $IPL; ?></h2>
 	<hr>
@@ -53,11 +73,31 @@
 	<div class="error"><?php echo form_error('pais_apr'); ?></div>
 
 	<label for="estado_apr">Estado da ocorrencia:</label><br/>
-	<?php echo form_dropdown('estado_apr', $arrayE); ?>
+	<select name="estado_apr" onchange="mostraCidades(this.value)">
+		<option value="">Selecione um estado:</option>
+		<?php
+
+			foreach ($estados as $estado): {
+							    		
+				// $arrayE[] = $estado->nome;
+		?>
+
+			<option value="<?php echo $estado->id; ?>"><?php echo $estado->nome; ?></option>
+
+		<?php
+
+			}endforeach;
+
+		?>
+
+								</select>
 	<div class="error"><?php echo form_error('estado_apr'); ?></div>
 
 	<label for="cidade_apr">Cidade da ocorrencia:</label><br/>
-	<?php echo form_dropdown('cidade_apr', $arrayC); ?>
+		<select id="listCidades" name="cidade_apr">
+			<option value="">Selecione uma cidade:</option>
+										
+		</select>
 	<div class="error"><?php echo form_error('cidade_apr'); ?></div>
 
 	<label for="endereco">Endereço da ocorrencia:</label><br/>

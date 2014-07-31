@@ -706,7 +706,7 @@ class Novo_documento extends CI_Controller {
         foreach ($list_cidades as $cidades) {
             $dataCidades = $cidades;
 
-            echo "<option value='".$cidades->estado."'>".$cidades->nome."</option>";
+            echo "<option value='".$cidades->id."'>".$cidades->nome."</option>";
         }
         
         return $dataCidades;       

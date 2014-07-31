@@ -116,24 +116,6 @@
 								}
 								</script>
 
-								 <script type="text/javascript">
-									var controller = 'ajax_sample';
-									var base_url = '<?php echo site_url(); //you have to load the "url_helper" to use this function ?>';
-									 
-									function load_data_ajax(type){
-									$.ajax({
-									'url' : base_url + '/' + novo_documento + '/chamaCidade',
-									'type' : 'POST', //the way you want to send data to your URL
-									'data' : {'type' : type},
-									'success' : function(data){ //probably this request will return anything, it'll be put in var "data"
-									var container = $('#listCidades'); //jquery selector (get element by id)
-									if(data){
-									container.html(data);
-									}
-									}
-									});
-									}
-								</script>
 							    
 
 							    <label for="pais_apr">Pais da ocorrencia:</label><br/>
@@ -172,26 +154,7 @@
 							    <?php // echo form_dropdown('cidade_apr', $arrayC); ?>
 							    	<select id="listCidades" name="cidade_apr">
 										<option value="">Selecione uma cidade:</option>
-										<?php
-
-											 if(isset($dataCidades)) {
-											 	?>
-
-											 	<option value="">Data passada:</option>
-
-											 	<?php
-
-											 }
-
-
-											foreach ($list_cidades as $cidade) {
-											 	?>
-
-											 	<option value="">lolo:</option>
-											 	<?php
-											 } 
-
-										?>
+										
 									</select>
 
 							    <div class="error"><?php echo form_error('cidade_apr'); ?></div>

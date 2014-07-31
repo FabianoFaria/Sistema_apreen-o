@@ -140,9 +140,20 @@
 			?>
 
 
-			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $cidade; ?> | Cidade : <?php echo $estado; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_auto/".$ROW_ID."/".$id_carro.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $cidade; ?> | Cidade : <?php echo $estado; ?>|
 
-
+			<?php
+			//trecho para habilitar ou não a edição de conteudo
+			if( ($this->session->userdata('status')) <= 1 )
+			{ 
+			?>
+				<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_auto/".$ROW_ID."/".$id_carro.""); ?>">Editar</a> | <a href="">Excluir</a> </li>
+			<?php
+			} else
+			{
+				echo "</li>";
+			}
+			?>
 
 			<?php
 
@@ -181,8 +192,20 @@
 		?>
 
 
-			<li>Produto : <?php echo $produto; ?> | Medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | Marca : <?php echo $marcaMercadoria; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			<li>Produto : <?php echo $produto; ?> | Medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | Marca : <?php echo $marcaMercadoria; ?>| 
 
+			<?php
+			//trecho para habilitar ou não a edição de conteudo
+			if( ($this->session->userdata('status')) <= 1 )
+			{ 
+			?>
+			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			 <?php
+			} else
+			{
+				echo "</li>";
+			}
+			?>
 
 
 			<?php
@@ -225,8 +248,20 @@
 		?>
 
 
-			<li>Nome do envolvido : <?php echo $nomeEnvolvido; ?> | Nascimento : <?php echo $nascimentoEnvol; ?> | Mâe do envolvido : <?php echo $motherEnvol; ?>| <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_contato/".$ROW_ID."/".$IdEnvol.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do envolvido : <?php echo $nomeEnvolvido; ?> | Nascimento : <?php echo $nascimentoEnvol; ?> | Mâe do envolvido : <?php echo $motherEnvol; ?>| 
 
+			<?php
+			//trecho para habilitar ou não a edição de conteudo
+			if( ($this->session->userdata('status')) <= 1 )
+			{ 
+			?>
+			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_contato/".$ROW_ID."/".$IdEnvol.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			 <?php
+			} else
+			{
+				echo "</li>";
+			}
+			?>
 
 
 			<?php
@@ -264,7 +299,20 @@
 
 		?>
 
-			<li>Nome do envolvido : <?php echo $produtoWRS; ?> | Unidade de medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do envolvido : <?php echo $produtoWRS; ?> | Unidade de medida : <?php echo $unidadeMedida; ?> | Quantidade : <?php echo $quantidade; ?> | 
+			<?php
+			//trecho para habilitar ou não a edição de conteudo
+			if( ($this->session->userdata('status')) <= 1 )
+			{ 
+			?>
+			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			 <?php
+			} else
+			{
+				echo "</li>";
+			}
+			?>
+
 
 			<?php
 
@@ -297,8 +345,21 @@
 			$local_arquivo = $anexo->location;
 		?>
 
-			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>">Baixar o arquivo</a> | <a href="<?php echo base_url("index.php/detalhes_documento/atualizar_anexos/".$ROW_ID."/".$Idanexos.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>">Baixar o arquivo</a> | 
+			<?php
+			//trecho para habilitar ou não a edição de conteudo
+			if( ($this->session->userdata('status')) <= 1 )
+			{ 
+			?>
+			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_anexos/".$ROW_ID."/".$Idanexos.""); ?>">Editar</a> | <a href="">Excluir</a></li>
+			 <?php
+			} else
+			{
+				echo "</li>";
+			}
+			?>
 
+			
 			<?php
 
 		}

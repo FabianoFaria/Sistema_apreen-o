@@ -18,6 +18,7 @@
                                 ?>
                                 <li><a href="atualizar_documento">Atualizar documento já existente</a></li>
                                 <li><a href="pesquisar_documento">Pesquisar documento já existente</a></li>
+                                <li><a href="#">Efetuar pesquisa avançada</a></li>
                                 
                                 <!-- conforme for avançando eu adiciono novos itens -->
 

@@ -2,8 +2,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12 main-menu">
 
                 <h2>Área restrita</h2>
-
-                <div class="col-md-6 col-sm-6 col-xs-6 lista-menu">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 lista-menu">
 
                         <ul>
                                 
@@ -12,13 +12,13 @@
                                 if( ($this->session->userdata('status')) <= 1 )
                                 { 
                                 ?>
-                                <li><a href="novo_documento">Inserir novo documento</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/novo_documento">Inserir novo documento</a></li>
                                 <?php
                                 }
                                 ?>
-                                <li><a href="atualizar_documento">Atualizar documento já existente</a></li>
-                                <li><a href="pesquisar_documento">Pesquisar documento já existente</a></li>
-                                <li><a href="#">Efetuar pesquisa avançada</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/atualizar_documento">Atualizar documento já existente</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/pesquisar_documento">Pesquisar documento já existente</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/pesquisa_avancada">Efetuar pesquisa de documentos</a></li>
                                 
                                 <!-- conforme for avançando eu adiciono novos itens -->
 
@@ -34,23 +34,34 @@
                         <ul>
                                 <?php 
 
+                               
+                                if($result == false)
+                                {
+
+                                ?>
+                                    <p>Nenhum documento cadastrado...</p>
+                                <?php
+
+                                } else 
+                                {
+
                                         foreach ($result as $doc) {
                                         
-                                 ?>
-                                        <li><?php echo $doc->IPL; ?><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="#">Apagar documento</a> </li>
+                                ?>
+                                            <li><?php echo $doc->IPL; ?><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="#">Apagar documento</a> </li>
 
-                                 <?php
-                                        }
+                                <?php
+                                        }//fim do foreach...
+                                } //fim do else...
 
                                 ?>
  
                         </ul>
         
-  <?php echo $links; ?>
+                        <?php echo $links; ?>
+                    </div> <!-- fim da classe lista-menu -->
+                </div> <!-- fim do row -->
 
-        
-        
-        </div>
 
 </div>
 

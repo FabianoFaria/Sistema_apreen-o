@@ -43,7 +43,8 @@ $route['404_override'] = '';
 
 $route['login'] = 'login/login';
 $route['area_restrita'] = 'login/area_restrita/main_page/';
-$route['area_restrita/main_page/(:any)'] = 'login/area_restrita/main_page/';
+$route['area_restrita/main_page/'] = 'login/area_restrita/';
+$route['area_restrita/main_page/(:any)'] = 'login/area_restrita/main_page/$i';
 
 $route['novo_documento'] = 'login/novo_documento';
 $route['novo_documento/cadastrarProtocolo'] = 'login/novo_documento/cadastrarProtocolo';
@@ -54,6 +55,8 @@ $route['continuar_documento/Endereco/(:any)'] = 'login/continuando_documento/End
 $route['atualizar_documento'] = 'login/atualizar_documento';
 $route['pesquisar_documento'] = 'login/pesquisar_documento';
 $route['detalhes_documento/(:any)'] = "login/detalhes_documento/$1";
+
+$route['pesquisa_avancada'] = "pesquisa/pesquisa_avancada";
 
 $route['logout'] = 'login/login/logout';
 $route['about'] = 'pages/view/about';

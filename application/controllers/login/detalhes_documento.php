@@ -16,7 +16,6 @@ class Detalhes_documento extends CI_Controller {
     }
     
     public function index($idRow) {
-
         $data['Ultimo_documento'] = $this->DetalhesModel->load_Ipls($idRow);
         $data['endereco'] =  $this->DetalhesModel->load_Addr($idRow);
         $data['automoveis'] =  $this->DetalhesModel->load_Auto($idRow);
@@ -24,8 +23,6 @@ class Detalhes_documento extends CI_Controller {
         $data['envolvidos'] =  $this->DetalhesModel->load_Contato($idRow);
         $data['locais'] =  $this->DetalhesModel->load_Armazem($idRow);
         $data['anexos'] = $this->DetalhesModel->load_anexos($idRow);
-
-        //Data de libraryes
 
         $this->load->helper('form');
         

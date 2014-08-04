@@ -13,13 +13,21 @@ class Detalhes_documento_model extends CI_Model {
     }
 
     public function load_Addr($idRow)
-    {
-    	$endereco =	$this->db->get_where('tbl_addr', array('ROW_ID' => $idRow));
+    {  
+        $this->db->select('tbl_addr.ID_addr, tbl_addr.ROW_ID, tbl_addr.address, tbl_addr.nunber, tbl_addr.complement, tbl_addr.district, tbl_addr.city, tbl_addr.state, tbl_addr.zipcode, tbl_addr.country, tbl_estados.nome, tbl_cidades.nome as cidade_nome');
+        $this->db->join('tbl_estados', 'tbl_estados.id = tbl_addr.state');
+        $this->db->join('tbl_cidades', 'tbl_addr.city = tbl_cidades.id' );
+        $this->db->where('ROW_ID', $idRow); 
+    	$endereco =	$this->db->get('tbl_addr');
+
     	return $endereco->result();
     }
 
     public function load_Auto($idRow)
-    {
+    {   
+        $this->db->select('tbl_vehicle.ID_vehicle, tbl_vehicle.ROW_ID, tbl_vehicle.category, tbl_vehicle.model, tbl_vehicle.brand, tbl_vehicle.chassi, tbl_vehicle.renavan, tbl_vehicle.placa, tbl_estados.nome as nome_estado, tbl_cidades.nome as cidade_nome');
+        $this->db->join('tbl_estados', 'tbl_estados.id = tbl_vehicle.state');
+        $this->db->join('tbl_cidades', 'tbl_vehicle.city = tbl_cidades.id' );
     	$automoveis = $this->db->get_where('tbl_vehicle', array('ROW_ID' => $idRow));
     	return $automoveis->result();
     }

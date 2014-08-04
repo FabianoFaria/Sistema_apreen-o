@@ -172,7 +172,7 @@
 							    <div class="error"><?php echo form_error('complemento'); ?></div>
 
 							    <label for="bairro">Bairro:</label><br/>
-							    <input type="text" name="cidade_apr" value="<?php echo set_value('bairro'); ?>"/>
+							    <input type="text" name="bairro" value="<?php echo set_value('bairro'); ?>"/>
 							    <div class="error"><?php echo form_error('bairro'); ?></div>
 
 							    <label for="CEP">CEP:</label><br/>

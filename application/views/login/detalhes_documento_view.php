@@ -61,14 +61,15 @@
 	</div>
 
 	<?php  
+
 		foreach ($endereco as $end) {
 			$EndRowid = $end->ROW_ID;
 			$logradouro = $end->address;
 			$numero = $end->nunber;
 			$complemento = $end->complement;
 			$bairro = $end->district;
-			$cidade = $end->city;
-			$estado = $end->state;
+			$cidade = $end->cidade_nome;
+			$estado = $end->nome;
 			$CEP = $end->zipcode;
 			$pais = $end->country;
 		}
@@ -134,13 +135,13 @@
 			$chassi = $carro->chassi;
 			$renavan = $carro->renavan;
 			$placa = $carro->placa;
-			$cidade = $carro->city;
-			$estado = $carro->state;
+			$cidade = $carro->cidade_nome;
+			$estado = $carro->nome_estado;
 
 			?>
 
 
-			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $cidade; ?> | Cidade : <?php echo $estado; ?>|
+			<li>Marca : <?php echo $marca; ?> | Placa : <?php echo $placa; ?> | Estado : <?php echo $estado; ?> | Cidade : <?php echo $cidade; ?>|
 
 			<?php
 			//trecho para habilitar ou não a edição de conteudo

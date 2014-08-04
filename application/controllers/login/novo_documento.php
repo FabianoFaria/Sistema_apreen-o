@@ -696,7 +696,7 @@ class Novo_documento extends CI_Controller {
     public function chamaCidade($id)
     {
 
-         $type = $this->input->post('type');
+        $type = $this->input->post('type');
 
         $list_cidades = $this->documentoModel->load_cidades_ajx($id); 
 

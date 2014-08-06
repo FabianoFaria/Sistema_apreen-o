@@ -25,6 +25,13 @@ class Pesquisa_avancada extends CI_Controller {
         
     }
 
+    public function gerarRelatorios()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('pesquisa/gera_relatorio_view');
+        $this->load->view('templates/footer');
+    }
+
     public function chamaDoct($value)
     {
 

@@ -57,6 +57,7 @@ $route['pesquisar_documento'] = 'login/pesquisar_documento';
 $route['detalhes_documento/(:any)'] = "login/detalhes_documento/$1";
 
 $route['pesquisa_avancada'] = "pesquisa/pesquisa_avancada";
+$route['gerarRelatorios'] = "pesquisa/pesquisa_avancada/gerarRelatorios";
 
 $route['logout'] = 'login/login/logout';
 $route['about'] = 'pages/view/about';

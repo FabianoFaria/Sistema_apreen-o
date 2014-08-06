@@ -16,10 +16,10 @@
                                 <?php
                                 }
                                 ?>
-                                <li><a href="<?php echo base_url(); ?>index.php/atualizar_documento">Atualizar documento já existente</a></li>
+                                
                                 <li><a href="<?php echo base_url(); ?>index.php/pesquisar_documento">Pesquisar documento já existente</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/pesquisa_avancada">Efetuar pesquisa de documentos</a></li>
-                                
+                                <li><a href="<?php echo base_url(); ?>index.php/gerarRelatorios">Gerar relatorios</a></li>
                                 <!-- conforme for avançando eu adiciono novos itens -->
 
                                 <br>
@@ -31,6 +31,9 @@
 
                         <br>
                         <br>
+                       
+                    </div> <!-- fim da classe lista-menu -->
+                    <div class="col-md-6 col-sm-6 col-xs-6 lista-menu">
                         <ul>
                                 <?php 
 
@@ -59,8 +62,17 @@
                         </ul>
         
                         <?php echo $links; ?>
-                    </div> <!-- fim da classe lista-menu -->
+                    </div>
+
+
                 </div> <!-- fim do row -->
+                <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <hr>
 
 
 </div>

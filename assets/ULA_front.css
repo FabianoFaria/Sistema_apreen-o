@@ -12,9 +12,9 @@ Folha de estilo
 
 /*header*/
 
-hr
+hr 
 {
-	border: 2px solid #422f7f;
+	size: 3px;
 }
 /* div do header do titulo  */
 .box_header

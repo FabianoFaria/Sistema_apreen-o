@@ -56,9 +56,21 @@ $route['atualizar_documento'] = 'login/atualizar_documento';
 $route['pesquisar_documento'] = 'login/pesquisar_documento';
 $route['detalhes_documento/(:any)'] = "login/detalhes_documento/$1";
 
+/* Deletar registros...*/
+
+$route['deletar_documento/(:any)'] = "login/atualizar_documento/deletar_doct/$1";
+$route['deletar_mercadoria/(:any)'] = "login/atualizar_documento/deletar_mercadoria/$1";
+$route['deletar_pessoas/(:any)'] = "login/atualizar_documento/deleta_pessoas/$1";
+$route['deletar_automoveis/(:any)'] = "login/atualizar_documento/deleta_auto/$1";
+$route['deletar_warehouse/(:any)'] = "login/atualizar_documento/deleta_wrs/$1";
+$route['deletar_anexo/(:any)'] = "login/atualizar_documento/deleta_anexo/$1";
+
+/* Pesquisa avançada*/
 $route['pesquisa_avancada'] = "pesquisa/pesquisa_avancada";
 $route['gerarRelatorios'] = "pesquisa/pesquisa_avancada/gerarRelatorios";
 
+
+/* Paginas basicas ....*/
 $route['logout'] = 'login/login/logout';
 $route['about'] = 'pages/view/about';
 $route['home'] = 'pages/view/home';

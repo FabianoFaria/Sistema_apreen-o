@@ -262,4 +262,75 @@ class Atualizar_documento extends CI_Controller {
        }
     }
 
+    /* funcão para apagar o documento... */
+
+    public function deletar_doct($ID_ROW)
+    {
+        $resultado = $this->atualizar->deleta_doct($ID_ROW);
+
+        if($resultado == true)
+        {
+            redirect('/area_restrita');
+        }
+
+    }
+
+    /* funcoes para apagar documentos... */
+
+    public function deletar_mercadoria($ID_ROW, $ID_haul)
+    {
+        $resultado = $this->atualizar->deleta_mercadoria($ID_haul);
+
+        if($resultado == true)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$ID_ROW.'');
+        }
+
+    }
+
+    public function deleta_pessoas($ID_ROW, $ID_contat)
+    {
+        $resultado = $this->atualizar->deleta_pessoas($ID_contat);
+
+        if($resultado == true)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$ID_ROW.'');
+        }
+
+    }
+
+    public function deleta_auto($ID_ROW, $ID_auto)
+    {
+        $resultado = $this->atualizar->deleta_automoveis($ID_auto);
+
+        if($resultado == true)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$ID_ROW.'');
+        }
+
+    }
+
+    public function deleta_wrs($ID_ROW, $ID_wrs)
+    {
+        $resultado = $this->atualizar->deleta_wrs($ID_wrs);
+
+        if($resultado == true)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$ID_ROW.'');
+        }
+
+    }
+
+    public function deleta_anexo ($ID_ROW, $ID_anexo)
+    {
+
+        $resultado = $this->atualizar->deleta_anexos($ID_anexo);
+
+        if($resultado == true)
+        {
+            redirect('/detalhes_documento/getTheRow/'.$ID_ROW.'');
+        }
+
+    }
+
 }

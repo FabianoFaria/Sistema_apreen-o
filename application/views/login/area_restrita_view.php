@@ -51,7 +51,7 @@
                                         foreach ($result as $doc) {
                                         
                                 ?>
-                                            <li><?php echo $doc->IPL; ?><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="#">Apagar documento</a> </li>
+                                            <li><?php echo $doc->IPL; ?><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="<?php echo base_url("index.php/deletar_documento/".$doc->ROW_ID.""); ?>">Apagar documento</a> </li>
 
                                 <?php
                                         }//fim do foreach...

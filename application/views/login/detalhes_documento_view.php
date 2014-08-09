@@ -28,7 +28,7 @@
 			if( ($this->session->userdata('status')) <= 1 )
 			{ 
 		?>
-		 <h4><a href="<?php echo base_url("index.php/continuar_documento/continueDoc/".$ROW_ID.""); ?>"><i class="fa fa-pencil"></i> Editar</a> - <a href=""><i class="fa fa-ban"></i> Excluir documeto</a></h4>
+		 <h4><a href="<?php echo base_url("index.php/continuar_documento/continueDoc/".$ROW_ID.""); ?>"><i class="fa fa-pencil"></i> Editar</a> - <a href="<?php echo base_url("index.php/deletar_documento/".$ROW_ID.""); ?>"><i class="fa fa-ban"></i> Excluir documeto</a></h4>
 		 <?php
 		 	}
 		 ?>
@@ -129,7 +129,7 @@
 						if( ($this->session->userdata('status')) <= 1 )
 						{ 
 						?>
-						 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href=""><i class="fa fa-ban"></i> Excluir</a></li>
+						 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href="<?php echo base_url("index.php/deletar_mercadoria/".$ROW_ID."/".$IdMerc.""); ?>"><i class="fa fa-ban"></i> Excluir</a></li>
 						 <?php
 						} 
 					 ?>
@@ -190,7 +190,7 @@
 						if( ($this->session->userdata('status')) <= 1 )
 						{ 
 						?>
-						 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_contato/".$ROW_ID."/".$IdEnvol.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href=""><i class="fa fa-ban"></i> Excluir</a></li>
+						 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_contato/".$ROW_ID."/".$IdEnvol.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href="<?php echo base_url("index.php/deletar_pessoas/".$ROW_ID."/".$IdEnvol.""); ?>"><i class="fa fa-ban"></i> Excluir</a></li>
 						 <?php
 						}
 					 ?>
@@ -253,7 +253,7 @@
 						if( ($this->session->userdata('status')) <= 1 )
 						{ 
 						?>
-							<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_auto/".$ROW_ID."/".$id_carro.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href=""><i class="fa fa-ban"></i> Excluir</a> </li>
+							<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_auto/".$ROW_ID."/".$id_carro.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href="<?php echo base_url("index.php/deletar_automoveis/".$ROW_ID."/".$id_carro.""); ?>"><i class="fa fa-ban"></i> Excluir</a> </li>
 						<?php
 						} 
 
@@ -312,7 +312,7 @@
 				if( ($this->session->userdata('status')) <= 1 )
 				{ 
 				?>
-				 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href=""><i class="fa fa-ban"></i> Excluir</a></li>
+				 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href="<?php echo base_url("index.php/deletar_warehouse/".$ROW_ID."/".$IdLocal.""); ?>"><i class="fa fa-ban"></i> Excluir</a></li>
 				 <?php
 				}
 			?>
@@ -359,7 +359,7 @@
 			if( ($this->session->userdata('status')) <= 1 )
 			{ 
 			?>
-			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_anexos/".$ROW_ID."/".$Idanexos.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href=""><i class="fa fa-ban"></i> Excluir</a></li>
+			 	<a href="<?php echo base_url("index.php/detalhes_documento/atualizar_anexos/".$ROW_ID."/".$Idanexos.""); ?>"><i class="fa fa-pencil"></i> Editar</a> | <a href="<?php echo base_url("index.php/deletar_anexo/".$ROW_ID."/".$Idanexos.""); ?>"><i class="fa fa-ban"></i> Excluir</a></li>
 			 <?php
 			} else
 			{

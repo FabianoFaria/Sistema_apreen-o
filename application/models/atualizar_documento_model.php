@@ -7,15 +7,21 @@ class Atualizar_documento_model extends CI_Model {
 
     /* Carregar dados */
 
-    public function doct_count()
+    public function doct_count() 
     {
-        return $this->db->count_all("tbl_doct");
+        //Retorna o total de documentos ativos cadastrados...
+
+        $this->db->where('status_doct', 0);
+        return $this->db->count_all_results('tbl_doct');
     }
 
     public function fetch_docs($limit, $start) 
-    {
+    {   
+        //retorna os documentos que estão ativos no banco de dados...
+
         $this->db->limit($limit, $start);
-        $query = $this->db->get("tbl_doct");
+        $this->db->where('status_doct', 0);
+        $query = $this->db->get('tbl_doct');
 
         if($query->num_rows() > 0)
         {
@@ -30,7 +36,8 @@ class Atualizar_documento_model extends CI_Model {
 
     public function load_todos_Ipls()
     {
-        $lastDoct = $this->db->get('tbl_doct');
+        //carrega todos os documentos....
+        $lastDoct = $this->db->get_where('tbl_doct', array('status_doct' => 0));
         return $lastDoct->result();
     }
 
@@ -39,7 +46,7 @@ class Atualizar_documento_model extends CI_Model {
 
     	//$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $this->db->limit(10);
-    	$lastDoct = $this->db->get('tbl_doct');
+    	$lastDoct = $this->db->get_where('tbl_doct', array('status_doct' => 0));
     	return $lastDoct->result();
     }
 
@@ -204,7 +211,69 @@ class Atualizar_documento_model extends CI_Model {
         return true;
     }
 
+     /* funçâo para deletar o documento...  é um update na verdade, mas tudo para evitar problemas de dados inconsistentes */
+
+     public function deleta_doct($id_doct)
+    {
+
+        $data = array(
+            'status_doct' => 3
+            );
+
+        $this->db->where('ROW_ID', $id_doct);
+        $this->db->update('tbl_doct', $data); 
+
+        return true;
+
+    }
+
+    /* funçôes para deletar os conteudos dos documentos... */
+
    
+    public function deleta_mercadoria($id_haul)
+    {
+        $this->db->where('ID_HAUL', $id_haul);
+        $this->db->delete('tbl_haul');
+
+        return true;
+
+    }
+
+    public function deleta_pessoas($id_contact)
+    {
+        $this->db->where('ID_contact', $id_contact);
+        $this->db->delete('tbl_contact');
+
+        return true;
+
+    }
+
+    public function deleta_automoveis($id_vehicle)
+    {
+        $this->db->where('ID_vehicle', $id_vehicle);
+        $this->db->delete('tbl_vehicle');
+
+        return true;
+
+    }
+
+    public function deleta_wrs($id_wrs)
+    {
+        $this->db->where('ID_wrs', $id_wrs);
+        $this->db->delete('tbl_wrs');
+
+        return true;
+
+    }
+
+    public function deleta_anexos($id_anexo)
+    {
+        $this->db->where('ID_anexos', $id_anexo);
+        $this->db->delete('tbl_anexos');
+
+        return true;
+
+    }
 }
 
        

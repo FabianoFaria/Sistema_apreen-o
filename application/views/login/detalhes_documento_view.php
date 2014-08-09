@@ -353,7 +353,7 @@
 			$local_arquivo = $anexo->location;
 		?>
 
-			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>">Baixar o arquivo</a> | 
+			<li>Nome do arquivo : <?php echo $nome_do_arquivo; ?> |  <a href="<?php echo base_url()."/uploads/".$local_arquivo; ?>"><i class="fa fa-download"></i></a> | 
 			<?php
 			//trecho para habilitar ou não a edição de conteudo
 			if( ($this->session->userdata('status')) <= 1 )

@@ -40,18 +40,13 @@
 	                <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
 	                	<h3>Detalhes do documento</h3>
 	                	<hr>
-	                       
-	                	*Adenndo - Ao serem inseridos no BD, os dados desta sessão tambem atualizam os dados na tabela TBL MAIN
 	                </div>
 
-	                <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
+	                <div class="col-md-12 col-sm-12 col-xs-12 lista-menu well">
 	                	<h3>Detalhes da apreensão</h3>
 	                	<hr>
 	                	  <!-- abre o formulário de cadastro -->
 							    <?php echo form_open('novo_documento/cadastrarProtocolo', 'id="form-new-ipl"'); ?>
-
-							    <h3>IPL : <?php echo  $stringD;  ?></h3>
-							    <br>
 
 							    <label for="Ipl_manual">IPL:</label><br/>
 							    <input type="text" name="Ipl_manual" value="<?php echo set_value('Ipl_manual'); ?>"/>
@@ -91,7 +86,7 @@
 	                </div>
 
 
-	                <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
+	                <div class="col-md-12 col-sm-12 col-xs-12 lista-menu well">
 	                	<h3>Local da apreensão</h3>
 	                	<hr>
 	                			<script>

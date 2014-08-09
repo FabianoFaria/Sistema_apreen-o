@@ -24,8 +24,10 @@ class User_model extends CI_Model {
         $logged = $this->session->userdata('logged');
 
         if (!isset($logged) || $logged != true) {
-            echo 'Voce nao tem permissao para entrar nessa pagina. <a href="http://localhost/ULA_front/index.php/login">Efetuar Login</a>';
-            die();
+             redirect('login?sessao expirada');
+            //echo 'Voce nao tem permissao para entrar nessa pagina. <a href="http://localhost/ULA_front/index.php/login">Efetuar Login</a>';
+            //die();
+           //$this->load->view(base_url().'/application/views/login/sessao_expirada_view');
         }
     }
 }

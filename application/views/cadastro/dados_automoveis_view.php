@@ -64,7 +64,7 @@
 			<h2>Cadastro de automoveis : <?php echo $Ipl; ?></h2>
 
 
-			 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
+			 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu well">
 
 			 	  <!-- abre o formulário de cadastro -->
 			   <?php echo form_open('login/novo_documento/cadatrar_veiculo', 'id="form-new-ipl"'); ?>
@@ -176,7 +176,7 @@
 	<a href="<?php echo base_url("/index.php/detalhes_documento/getTheRow/".$id_Row.""); ?>">Cancelar</a>
 
 
-	 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
+	 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu well">
 
 	 	  <!-- abre o formulário de cadastro -->
 	   <?php echo form_open('login/novo_documento/cadatrar_veiculo', 'id="form-new-ipl"'); ?>

@@ -42,7 +42,7 @@
 	<h2>Alteração dos dados do documento : <?php echo $doc->IPL; ?></h2>
 
 
-	 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu">
+	 <div class="col-md-12 col-sm-12 col-xs-12 lista-menu well">
 
 	 	  <!-- abre o formulário de cadastro -->
 			<?php echo form_open('login/atualizar_documento/atualizaDoc', 'id="form-update-ipl"'); ?>		

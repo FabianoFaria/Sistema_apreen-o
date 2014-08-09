@@ -268,7 +268,7 @@ $config['encryption_key'] = 'pj0KB4oEbFTsPKP';
 |
 */
 $config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
+$config['sess_expiration']		= 7200; //7200
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;
@@ -280,7 +280,7 @@ $config['sess_time_to_update']	= 300;
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables
-|--------------------------------------------------------------------------
+|----------------------------------------720----------------------------------
 |
 | 'cookie_prefix' = Set a prefix if you need to avoid collisions
 | 'cookie_domain' = Set to .your-domain.com for site-wide cookies

@@ -3,9 +3,9 @@
 
                 <h2>Área restrita</h2>
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6 lista-menu">
+                    <div class="col-md-3 col-sm-3 col-xs-3 lista-menu  sidebar">
 
-                        <ul>
+                        <ul class="nav nav-sidebar">
                                 
                                 <?php
                                 //trecho para habilitar ou não a edição de conteudo
@@ -33,8 +33,17 @@
                         <br>
                        
                     </div> <!-- fim da classe lista-menu -->
-                    <div class="col-md-6 col-sm-6 col-xs-6 lista-menu">
-                        <ul>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 lista-menu table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Nome/numero IPL</th>
+                              <th>Ação</th>
+                            </tr>
+                          </thead>
+                          <tbody>
                                 <?php 
 
                                
@@ -51,15 +60,17 @@
                                         foreach ($result as $doc) {
                                         
                                 ?>
-                                            <li><?php echo $doc->IPL; ?><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="<?php echo base_url("index.php/deletar_documento/".$doc->ROW_ID.""); ?>">Apagar documento</a> </li>
-
+                                <tr>
+                                    <td><?php echo $doc->IPL; ?></td><td><a href="<?php echo base_url(); ?>index.php/detalhes_documento/getTheRow/<?php echo $doc->ROW_ID; ?>">Editar Documento</a> | <a href="<?php echo base_url("index.php/deletar_documento/".$doc->ROW_ID.""); ?>">Apagar documento</a> </td>
+                                </tr>
                                 <?php
                                         }//fim do foreach...
                                 } //fim do else...
 
                                 ?>
  
-                        </ul>
+                         </tbody>
+                        </table>
         
                         <?php echo $links; ?>
                     </div>
@@ -76,4 +87,3 @@
 
 
 </div>
-

@@ -11,6 +11,7 @@ class Pesquisa_model extends CI_Model {
 
     	$this->db->select('*');
     	$this->db->like('IPL', $value);
+        $this->db->where('status_doct', 0);
         $query = $this->db->get('tbl_doct');
         return $query->result();
     }

@@ -27,8 +27,19 @@ hr
 
 .box_user
 {
-	background-color: #cccccc;
+	background-color: #cccccc !important;
+	border-radius: 0px !important;
+	border:  0px #cccccc !important;
 	height: 120px;
+}
+.navbar-inverse .navbar-nav > li > a
+{
+	color: #000000 !important;
+}
+
+.box_user h2 
+{
+	color: #000000;
 }
 
 .box_user h4 

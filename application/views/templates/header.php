@@ -30,35 +30,50 @@
 </head>
     <body>
 		<div class="row sem_margin">
-			<div class="col-md-6 col-sm-6 col-xs-6 box_header sem_padding">
 
-					<h2 >Sistema de registro de apreenção</h2>
+            <div class="navbar navbar-inverse box_user" role="navigation">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="<?php echo base_url("/index.php/area_restrita"); ?>"><h2>Sistema de registro de apreenção</h2></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <?php
 
-			</div>
-			<div class="col-md-6 col-sm-6 col-xs-6 box_user sem_padding">
-				<?php
+                    $user_name = "p";
 
-					$user_name = "p";
+                    $user_name = $this->session->userdata('nome_usr');
+                    
 
-        			$user_name = $this->session->userdata('nome_usr');
-        			
+                    if($user_name != "p")
+                    {  ?>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Perfil <?php echo $user_name; ?></a></li>
+                        <li><a href="<?php echo base_url("/index.php/logout"); ?>">Sair</a></li>
+                      </ul>
+                      <form class="navbar-form navbar-right">
+                        <input type="text" class="form-control" placeholder="Pesquisar...">
+                      </form>
+                    <?php
+                    }else
+                    {
+                        echo "algo errafo";
+                    }
 
-        			if($user_name != "p")
-        			{  ?>
 
-        				<h4>Bem-vindo usuario :<?php echo $user_name; ?> | <a href="<?php echo base_url("/index.php/logout"); ?>">Sair da sessão</a>
-        					<br>
-        					 | <a href="<?php echo base_url("/index.php/area_restrita"); ?>">Menu principal</a>
-        				</h4> 
-
-        			<?php
-        			}else
-        			{
-        				echo "algo errafo";
-        			}
+                    ?>
+                </div>
+              </div>
+            </div>
 
 
-				?>
-
-			</div>
+			
+		
 		</div>

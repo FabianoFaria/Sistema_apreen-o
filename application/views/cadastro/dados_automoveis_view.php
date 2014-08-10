@@ -169,6 +169,28 @@
 		}endforeach;
 	?>
 
+	<script>
+		function mostraCidades(str) {
+		if (str=="") {
+		document.getElementById("cidade_apr").innerHTML="";
+		return;
+		}
+		if (window.XMLHttpRequest) {
+		 // code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+		} else { // code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			document.getElementById("listCidades").innerHTML=xmlhttp.responseText;
+		}
+		}
+		xmlhttp.open("GET","<?php echo base_url(); ?>index.php/login/novo_documento/chamaCidade/"+str,true);
+		xmlhttp.send();
+		}
+	</script>
+
 
 
 	<h2>Cadastro de automoveis : <?php echo $Ipl; ?></h2>
@@ -206,11 +228,29 @@
 		<div class="error"><?php echo form_error('placa_n'); ?></div>
 
 		<label for="estado">Estado :</label><br/>
-		<?php echo form_dropdown('estado', $arrayE); ?>
-		<br>
+					<select name="estado_apr" onchange="mostraCidades(this.value)">
+						<option value="">Selecione um estado:</option>
+							<?php
+
+								foreach ($estados as $estado): {
+							    
+							?>
+
+								<option value="<?php echo $estado->id; ?>"><?php echo $estado->nome; ?></option>
+
+							<?php
+
+								 }endforeach;
+
+							?>
+
+					</select>
+				<br>
 
 		<label for="cidade">Cidade :</label><br/>
-		<?php echo form_dropdown('cidade', $arrayC); ?>
+			<select id="listCidades" name="cidade_apr">
+				<option value="">Selecione uma cidade:</option>			
+			</select>
 		<br>
 		<br>
 

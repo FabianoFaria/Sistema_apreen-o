@@ -67,3 +67,5 @@ $db['default']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
+
+/* usr para hostinger : u148172072_rootd*/

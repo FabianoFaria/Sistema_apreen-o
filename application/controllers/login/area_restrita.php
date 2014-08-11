@@ -16,13 +16,6 @@ class Area_restrita extends CI_Controller {
     
     public function index() {
 
-       
-
-        /* Load the view and pass the variables */
-       // $this->load->view('page_view', $data);
-        //}
-    
-
         $this->load->helper('url');
         $this->load->view('templates/header');
         $this->load->view('login/area_restrita_view');

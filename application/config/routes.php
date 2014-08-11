@@ -67,7 +67,7 @@ $route['deletar_anexo/(:any)'] = "login/atualizar_documento/deleta_anexo/$1";
 
 /* Pesquisa avançada*/
 $route['pesquisa_avancada'] = "pesquisa/pesquisa_avancada";
-$route['gerarRelatorios'] = "pesquisa/pesquisa_avancada/gerarRelatorios";
+$route['gerarRelatorios'] = "pesquisa/relatorios_gen/gera_relatorio";
 
 
 /* Paginas basicas ....*/
